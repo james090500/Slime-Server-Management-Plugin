@@ -1,0 +1,3 @@
+main: com.james090500.SlimeServerManagement.Main
+name: SlimeServerManagement
+version: ${project.version}
