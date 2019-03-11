@@ -10,7 +10,7 @@ public class RouteMaster {
 	private Map<String, String> GET_ROUTES = new HashMap<String, String>();
 	private Map<String, String> POST_ROUTES = new HashMap<String, String>();
 	
-	public void setRouteGet(String route, String controller) {
+	public void setRouteGet(String route, String controller) {		
 		GET_ROUTES.put(route, controller);
 	}
 	

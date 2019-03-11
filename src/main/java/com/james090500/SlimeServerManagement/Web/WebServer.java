@@ -23,9 +23,9 @@ public class WebServer extends NanoHTTPD {
 	 */
 	@Override
 	public Response serve(IHTTPSession session) {	
-		
+				
 		String[] routeController;
-		
+
 		switch(session.getMethod()) {
 			case GET:
 				routeController = RouteMaster.INSTANCE.getRoutesGet().get(session.getUri()).split("@");

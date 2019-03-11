@@ -6,6 +6,9 @@ public class Router {
 		RouteMaster route = RouteMaster.INSTANCE;
 				
 		route.setRouteGet("/", "HomeController@index");
+		
+		route.setRouteGet("/players", "PlayerController@index");
+		route.setRouteGet("/players/{uuid}", "PlayerController@getPlayer");
 	}
 	
 }

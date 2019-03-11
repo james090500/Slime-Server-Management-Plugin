@@ -9,7 +9,7 @@ import fi.iki.elonen.NanoHTTPD;
 import fi.iki.elonen.NanoHTTPD.Response;
 import fi.iki.elonen.NanoHTTPD.Response.Status;
 
-public class HomeController {
+public class PlayerController {
 	
 	public static Response index() {
 		JsonArray onlinePlayers = new JsonArray(); 
@@ -19,4 +19,10 @@ public class HomeController {
 		Response res = NanoHTTPD.newFixedLengthResponse(Status.OK, "application/json", onlinePlayers.toString());
 		return res;
 	}
+	
+	public static Response getPlayer() {
+		Response res = NanoHTTPD.newFixedLengthResponse(Status.OK, "application/json", "IT WORKS");
+		return res;
+	}
+
 }

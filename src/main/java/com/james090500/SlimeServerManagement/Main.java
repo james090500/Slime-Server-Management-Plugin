@@ -8,6 +8,8 @@ import com.james090500.SlimeServerManagement.Web.WebServer;
 
 public class Main extends JavaPlugin
 {
+	
+	//https://jersey.github.io seems like the way :/
     @Override
     public void onEnable() {
     	try {
