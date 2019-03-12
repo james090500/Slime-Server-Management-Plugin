@@ -1,4 +1,4 @@
-package com.james090500.SlimeServerManagement.Controllers;
+package com.james090500.SlimeServerManagement.Spigot.Controllers;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -40,7 +40,7 @@ public class HomeController {
 		JsonArray onlinePlayers = new JsonArray();
 		
 		for(Player p : Bukkit.getServer().getOnlinePlayers()) {
-			onlinePlayers.add(p.getUniqueId().toString().replaceAll("-", ""));
+			onlinePlayers.add(p.getUniqueId().toString());
 		}
 		
 		responseJson.addProperty("success", true);

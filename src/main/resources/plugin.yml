@@ -1,3 +1,3 @@
-main: com.james090500.SlimeServerManagement.Main
+main: com.james090500.SlimeServerManagement.MainSpigot
 name: SlimeServerManagement
 version: ${project.version}
