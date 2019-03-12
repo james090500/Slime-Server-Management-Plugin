@@ -1,22 +1,50 @@
 package com.james090500.SlimeServerManagement.Controllers;
 
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
-import fi.iki.elonen.NanoHTTPD;
-import fi.iki.elonen.NanoHTTPD.Response;
-import fi.iki.elonen.NanoHTTPD.Response.Status;
+import net.minecraft.server.v1_13_R2.MinecraftServer;
 
+@Path("/")
+@Produces(MediaType.APPLICATION_JSON)
 public class HomeController {
 	
-	public static Response index() {
-		JsonArray onlinePlayers = new JsonArray(); 
+	@Path("/ping")
+	@GET
+	public String ping() {
+		JsonObject responseJson = new JsonObject();			
+		String motd = Bukkit.getServer().getMotd();
+		String playersOnline = Bukkit.getServer().getOnlinePlayers().size() + "/" + Bukkit.getServer().getMaxPlayers();
+		int tps = MinecraftServer.TPS;
+				
+		responseJson.addProperty("success", true);
+		responseJson.addProperty("motd", motd);
+		responseJson.addProperty("playersOnline", playersOnline);
+		responseJson.addProperty("tps", tps);
+		
+		return responseJson.toString();
+	}
+	
+	@Path("/players")
+	@GET	
+	public String players() {
+		JsonObject responseJson = new JsonObject();
+		JsonArray onlinePlayers = new JsonArray();
+		
 		for(Player p : Bukkit.getServer().getOnlinePlayers()) {
 			onlinePlayers.add(p.getUniqueId().toString().replaceAll("-", ""));
 		}
-		Response res = NanoHTTPD.newFixedLengthResponse(Status.OK, "application/json", onlinePlayers.toString());
-		return res;
+		
+		responseJson.addProperty("success", true);
+		responseJson.add("players", onlinePlayers.getAsJsonArray());
+		return responseJson.toString();
 	}
 }

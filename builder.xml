@@ -3,7 +3,7 @@
 <project name="SlimeServerManagement" default="CreateJar">
   <target name="CreateJar" description="Create Jar file">
         <jar jarfile="./server/plugins/SlimeServerManagement.jar" basedir="./target/classes/" includes="**/*">
-        	<zipgroupfileset dir="../libs" includes="nanohttpd-2.2.0.jar" />
+        	<zipgroupfileset dir="../libs" includes="SlimeServerManagement-0.0.1-SNAPSHOT-shaded.jar" />        	
         	<manifest>
         		<attribute name="DependencyFinder" value="main"/>
         		<attribute name="Main-Class" value="com.james090500.SlimeServerManagement.Main"/>
