@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.james090500.SlimeServerManagement.Spigot.Model.HomeModel;
 
 import net.minecraft.server.v1_13_R2.MinecraftServer;
 
@@ -29,6 +30,8 @@ public class HomeController {
 		responseJson.addProperty("motd", motd);
 		responseJson.addProperty("playersOnline", playersOnline);
 		responseJson.addProperty("tps", tps);
+		responseJson.addProperty("version", Bukkit.getName() + " " + Bukkit.getVersion());
+		responseJson.addProperty("totalEconomy", HomeModel.getTotalEconomy());
 		
 		return responseJson.toString();
 	}
