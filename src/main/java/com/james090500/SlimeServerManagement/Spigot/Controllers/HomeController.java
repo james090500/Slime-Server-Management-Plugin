@@ -5,13 +5,14 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.Logger;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.james090500.SlimeServerManagement.Spigot.Model.HomeModel;
-
 import net.minecraft.server.v1_13_R2.MinecraftServer;
 
 @Path("/")
@@ -20,7 +21,7 @@ public class HomeController {
 	
 	@Path("/ping")
 	@GET
-	public String ping() {
+	public String getPing() {
 		JsonObject responseJson = new JsonObject();			
 		String motd = Bukkit.getServer().getMotd();
 		String playersOnline = Bukkit.getServer().getOnlinePlayers().size() + "/" + Bukkit.getServer().getMaxPlayers();
@@ -38,16 +39,26 @@ public class HomeController {
 	
 	@Path("/players")
 	@GET	
-	public String players() {
+	public String getPlayers() {
 		JsonObject responseJson = new JsonObject();
 		JsonArray onlinePlayers = new JsonArray();
+		JsonObject currentPlayer;
 		
 		for(Player p : Bukkit.getServer().getOnlinePlayers()) {
-			onlinePlayers.add(p.getUniqueId().toString());
+			currentPlayer = new JsonObject();
+			currentPlayer.addProperty("uuid", p.getUniqueId().toString());
+			currentPlayer.addProperty("username", p.getName());
+			onlinePlayers.add(currentPlayer);
 		}
 		
 		responseJson.addProperty("success", true);
 		responseJson.add("players", onlinePlayers.getAsJsonArray());
 		return responseJson.toString();
+	}
+	
+	@Path("/console")
+	@GET
+	public String getConsole() {
+		return "to do";
 	}
 }
