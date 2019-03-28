@@ -5,14 +5,13 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.core.Logger;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.james090500.SlimeServerManagement.Spigot.Model.HomeModel;
+
 import net.minecraft.server.v1_13_R2.MinecraftServer;
 
 @Path("/")
