@@ -9,6 +9,7 @@ import org.glassfish.jersey.jetty.JettyHttpContainerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 
 import com.james090500.SlimeServerManagement.Spigot.Controllers.HomeController;
+import com.james090500.SlimeServerManagement.Spigot.Controllers.LogController;
 import com.james090500.SlimeServerManagement.Spigot.Controllers.PlayerController;
 
 public class WebServer {
@@ -35,8 +36,9 @@ public class WebServer {
 	        URI baseUri = UriBuilder.fromUri("http://" + host).port(port).build();
     		ResourceConfig config = new ResourceConfig(
     				HomeController.class,
-    				PlayerController.class
-			);
+    				PlayerController.class,
+    				LogController.class
+			);    			
     		
 	        server = JettyHttpContainerFactory.createServer(baseUri, config);	       
 	        server.start();	        

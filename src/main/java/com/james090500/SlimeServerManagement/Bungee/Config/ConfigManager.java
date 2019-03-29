@@ -31,8 +31,10 @@ public class ConfigManager {
 
      
         if (!file.exists()) {
-            try (InputStream in = ConfigManager.class.getResourceAsStream("config.yml")) {
+            try {
+            	InputStream in = ConfigManager.class.getResourceAsStream("config.yml");
                 Files.copy(in, file.toPath());
+                in.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
